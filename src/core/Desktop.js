@@ -19,7 +19,7 @@ export class Desktop {
 
 
     init(){
-        console.log('init');
+        // console.log('init');
         this.element.addEventListener('mousedown', this.mouseDown);
         
         window.addEventListener('mouseup', this.mouseUp);
@@ -30,7 +30,7 @@ export class Desktop {
 
     mouseDown(e){
         console.log(this);
-        console.log('mouse down');
+        // console.log('mouse down');
 
         this.isTouch  = true;
 
@@ -39,7 +39,7 @@ export class Desktop {
     }
 
     mouseUp(e){
-        console.log('mouse up');
+        // console.log('mouse up');
 
         this.isTouch = false;
 
@@ -47,7 +47,7 @@ export class Desktop {
 
     mouseMove(e){
         if(!this.isTouch) return;
-        console.log('mouse move');
+        // console.log('mouse move');
 
         let screen = {
             width  : window.innerWidth,
@@ -59,14 +59,22 @@ export class Desktop {
             height : this.element.clientHeight
         };
 
+
+        this.touch.delta = {
+            x : e.screenX - this.touch.move.x,
+            y : e.screenY - this.touch.move.y
+        };
+
+        console.log('delta', this.touch.delta);
+
         this.touch.move = {
             x : e.screenX,
             y : e.screenY
         };
 
-        console.log('move ', this.touch.move);
+        // console.log('move ', this.touch.move);
 
-        console.log('screen ', screen)
+        // console.log('screen ', screen)
 
     }
 
