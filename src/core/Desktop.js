@@ -34,6 +34,8 @@ export class Desktop {
 
         this.isTouch  = true;
 
+        this.touch.move.x = e.screenX;
+        this.touch.move.y = e.screenY;
     }
 
     mouseUp(e){
@@ -46,6 +48,18 @@ export class Desktop {
     mouseMove(e){
         if(!this.isTouch) return;
         console.log('mouse move');
+
+        let screen = {
+            width  : window.innerWidth,
+            height : window.innerHeight
+        };
+
+        if(this.element !== window) screen = {
+            width  : this.element.clientWidth,
+            height : this.element.clientHeight
+        };
+
+        console.log('screen ', screen)
 
     }
 
