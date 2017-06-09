@@ -30,15 +30,23 @@ export class Desktop {
 
     mouseDown(e){
         console.log(this);
-        
+        console.log('mouse down');
+
+        this.isTouch  = true;
+
     }
 
     mouseUp(e){
+        console.log('mouse up');
+
+        this.isTouch = false;
 
     }
 
     mouseMove(e){
+        if(!this.isTouch) return;
+        console.log('mouse move');
 
     }
 
-} 
+}
