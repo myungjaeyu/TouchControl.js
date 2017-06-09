@@ -33,14 +33,21 @@ export class Mobile {
 
     touchDown(e){
         console.log(this);
-        
+        console.log('touch start');
+
+        this.isTouch = true;
+
     }
 
-    touchUp(e){
-
+    touchUp(e){ 
+        console.log('touch end');
+        
+        this.isTouch = false;
     }
 
     touchMove(e){
+        if(!this.isTouch) return;   
+        console.log('touch move');
 
     }
 
