@@ -59,6 +59,13 @@ export class Desktop {
             height : this.element.clientHeight
         };
 
+        this.touch.move = {
+            x : e.screenX,
+            y : e.screenY
+        };
+
+        console.log('move ', this.touch.move);
+
         console.log('screen ', screen)
 
     }
