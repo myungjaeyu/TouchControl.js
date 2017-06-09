@@ -5,7 +5,7 @@ export default {
     entry: './src/App.js',
     dest: './dist/pure-touch-interaction.js',
     format: 'umd',
-    moduleName: 'PTI',
+    moduleName: 'TouchControl',
     sourceMap: 'inline',
     plugins: [
         uglify({}, minify)
