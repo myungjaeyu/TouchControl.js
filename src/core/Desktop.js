@@ -7,7 +7,9 @@ export class Desktop {
 
         this.touch = {
             delta : {},
-            move : {}
+            move  : {},
+            pitch : 0,
+            yaw   : 0
         };
         
         this.mouseDown = this.mouseDown.bind(this);
@@ -76,6 +78,19 @@ export class Desktop {
 
         // console.log('screen ', screen)
 
+        let 
+            fov    = 45,
+            aspect = screen.width / screen.height,
+            radian = Math.PI/180,
+            half   = Math.PI/2;
+
+        this.touch.yaw   += this.touch.delta.x / screen.width * fov * aspect * radian;
+        
+        this.touch.pitch += this.touch.delta.y / screen.height * fov * radian;
+        this.touch.pitch  = Math.max(-half, Math.min(half, this.touch.pitch));
+
+        console.log('y yaw', this.touch.yaw);
+        console.log('x pitch', this.touch.pitch);
     }
 
 }
