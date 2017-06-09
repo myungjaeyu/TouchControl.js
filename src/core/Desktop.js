@@ -10,6 +10,10 @@ export class Desktop {
             move : {}
         };
         
+        this.mouseDown = this.mouseDown.bind(this);
+        this.mouseUp   = this.mouseUp.bind(this);
+        this.mouseMove = this.mouseMove.bind(this);
+
         this.init();
     }
 
@@ -25,7 +29,8 @@ export class Desktop {
     }
 
     mouseDown(e){
-
+        console.log(this);
+        
     }
 
     mouseUp(e){
