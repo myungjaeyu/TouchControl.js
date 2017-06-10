@@ -49,6 +49,9 @@ export class Mobile {
         }
         
 
+        this.touch.move.x = e.touches[0].pageX;
+        this.touch.move.y = e.touches[0].pageY;
+        console.log('touch move', this.touch.move);
     }
 
     touchUp(e){ 
@@ -60,7 +63,7 @@ export class Mobile {
 
     touchMove(e){
         if(!this.isTouch) return;   
-        console.log('touch move');
+        // console.log('touch move');
 
         if(e.touches.length > 1){
             
@@ -73,11 +76,23 @@ export class Mobile {
 
 
             this.touch.pinch.zoom = this.touch.pinch.start / this.touch.pinch.end;
-            console.log('pinch zoom', this.touch.pinch.zoom);
-            
+            // console.log('pinch zoom', this.touch.pinch.zoom);
+
             this.isPinch = true;
             return;
         }
+
+        let screen = {
+            width  : window.innerWidth,
+            height : window.innerHeight
+        };
+
+        if(this.element !== window) screen = {
+            width  : this.element.clientWidth,
+            height : this.element.clientHeight
+        };
+
+        console.log('screen ', screen);        
 
     }
 
