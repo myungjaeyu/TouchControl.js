@@ -79,7 +79,13 @@ export class Mobile {
             south : false,
             east  : false,
             west  : false
-        };        
+        };
+
+        this._gesture = {
+            type : '',
+            count : 0
+        };
+                        
     }
 
     touchMove(e){
