@@ -51,13 +51,14 @@
                         + 'Delta X : ' + touch.delta.x+'\n'
                         + 'Delta Y : ' + touch.delta.y+'\n'
                         + 'Yaw : ' + touch.yaw.toFixed(2)+'\n'
-                        + 'Pitch : ' + touch.pitch.toFixed(2)+'\n';
+                        + 'Pitch : ' + touch.pitch.toFixed(2)+'\n'
+                        + 'Type  : ' + touch.type+'\n';
  
-                        Object.keys(touch.direction).forEach(function(item){
+                        // Object.keys(touch.direction).forEach(function(item){
                             
-                            if(touch.direction[item]) console.log(item);
+                        //     if(touch.direction[item]) console.log(item);
  
-                        });
+                        // });
                 });
             
             console.log(desktop);

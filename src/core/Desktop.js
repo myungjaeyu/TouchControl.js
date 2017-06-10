@@ -4,16 +4,18 @@ export class Desktop {
         
         this.element = element || window;
         this.isTouch = false;
+        this.isMove = false;
 
         this.touch = {
             delta : {},
             move  : {},
             pitch : 0,
             yaw   : 0,
+            type  : '',
             direction : {
                 north : false,
-                east  : false,
                 south : false,
+                east  : false,
                 west  : false
             }
         };
@@ -49,11 +51,28 @@ export class Desktop {
     mouseUp(e){
         // console.log('mouse up');
 
+        if(this.isMove){
+            
+            let 
+                typeArr = [];
+
+            Object.keys(this.touch.direction).map( (item) => {
+                
+                if(this.touch.direction[item]) typeArr.push(item);
+
+            });
+            
+            if(typeArr.length > 1) this.touch.type = Math.abs(this.touch.delta.y) > Math.abs(this.touch.delta.x) ? typeArr[0] : typeArr[1];
+
+            this.isMove  = false;
+        }
+
         this.isTouch = false;
+
         this.touch.direction = {
             north : false,
-            east  : false,
             south : false,
+            east  : false,
             west  : false
         };
 
@@ -61,6 +80,7 @@ export class Desktop {
 
     mouseMove(e){
         if(!this.isTouch) return;
+        this.isMove  = true;
         // console.log('mouse move');
 
         let screen = {
@@ -79,9 +99,10 @@ export class Desktop {
             y : e.clientY - this.touch.move.y
         };
        
-        if(this.touch.delta.y !== 0) this.touch.delta.y > 0 ? ( () => { this.touch.direction.south = true;  this.touch.direction.north = false; } )() : ( ()=> { this.touch.direction.north = true; this.touch.direction.south = false; } )();
-        if(this.touch.delta.x !== 0) this.touch.delta.x > 0 ? ( () => { this.touch.direction.east  = true;  this.touch.direction.west  = false; } )() : ( ()=> { this.touch.direction.west  = true; this.touch.direction.east  = false; } )();
-
+        if(Math.abs(this.touch.delta.y) > 1) this.touch.delta.y > 0 ? ( () => { this.touch.direction.south = true;  this.touch.direction.north = false; } )() : ( ()=> { this.touch.direction.north = true; this.touch.direction.south = false; } )();
+        if(Math.abs(this.touch.delta.x) > 1) this.touch.delta.x > 0 ? ( () => { this.touch.direction.east  = true;  this.touch.direction.west  = false; } )() : ( ()=> { this.touch.direction.west  = true; this.touch.direction.east  = false; } )();
+  
+        // console.log('direction', this.touch.direction);
         // console.log('delta', this.touch.delta);
 
         this.touch.move = {
