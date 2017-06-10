@@ -92,7 +92,14 @@ export class Mobile {
             height : this.element.clientHeight
         };
 
-        console.log('screen ', screen);        
+        this.touch.move = {
+            x : e.touches[0].pageX,
+            y : e.touches[0].pageY
+        };
+
+        console.log('move ', this.touch.move);        
+
+        // console.log('screen ', screen);        
 
     }
 
