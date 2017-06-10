@@ -24,7 +24,7 @@ export class Mobile {
 
 
     init(){
-        console.log('init');
+        // console.log('init');
         this.element.addEventListener('touchstart', this.touchDown);
 
         window.addEventListener('touchend', this.touchUp);
@@ -36,7 +36,7 @@ export class Mobile {
 
     touchDown(e){
         // console.log(this);
-        console.log('touch start');
+        // console.log('touch start');
 
         this.isTouch = true;
 
@@ -56,7 +56,7 @@ export class Mobile {
     }
 
     touchUp(e){ 
-        console.log('touch end');
+        // console.log('touch end');
         
         this.isTouch = false;
         this.isPinch = false;
@@ -120,8 +120,8 @@ export class Mobile {
         this.touch.pitch += this.touch.delta.y / screen.height * fov * radian;
         this.touch.pitch  = Math.max(-half, Math.min(half, this.touch.pitch));
 
-        console.log('yaw', this.touch.yaw);
-        console.log('pitch', this.touch.pitch);
+        // console.log('yaw', this.touch.yaw);
+        // console.log('pitch', this.touch.pitch);
     }
 
 }

@@ -67,7 +67,7 @@ export class Desktop {
             y : e.screenY - this.touch.move.y
         };
 
-        console.log('delta', this.touch.delta);
+        // console.log('delta', this.touch.delta);
 
         this.touch.move = {
             x : e.screenX,
@@ -89,8 +89,8 @@ export class Desktop {
         this.touch.pitch += this.touch.delta.y / screen.height * fov * radian;
         this.touch.pitch  = Math.max(-half, Math.min(half, this.touch.pitch));
 
-        console.log('y yaw', this.touch.yaw);
-        console.log('x pitch', this.touch.pitch);
+        // console.log('y yaw', this.touch.yaw);
+        // console.log('x pitch', this.touch.pitch);
     }
 
 }
