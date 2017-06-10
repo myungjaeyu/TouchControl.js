@@ -58,7 +58,7 @@ export class Mobile {
         console.log('touch end');
         
         this.isTouch = false;
-        this.isPinch = true;
+        this.isPinch = false;
     }
 
     touchMove(e){
