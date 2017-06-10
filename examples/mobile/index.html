@@ -54,13 +54,14 @@
                         + 'Pitch : ' + touch.pitch.toFixed(2)+'\n' 
                         + 'Pinch start : ' + touch.pinch.start+'\n'
                         + 'Pinch end   : ' + touch.pinch.end+'\n'
-                        + 'Pinch zoom  : ' + touch.pinch.zoom+'\n';
+                        + 'Pinch zoom  : ' + touch.pinch.zoom+'\n'
+                        + 'Type  : ' + touch.type+'\n';                        
                         
-                        Object.keys(touch.direction).forEach(function(item){
+                        // Object.keys(touch.direction).forEach(function(item){
                             
-                            if(touch.direction[item]) console.log(item);
+                            // if(touch.direction[item]) console.log(item);
  
-                        });                        
+                        // });
                 });
             
             console.log(mobile);

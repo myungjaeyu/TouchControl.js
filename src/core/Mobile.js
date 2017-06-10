@@ -4,6 +4,7 @@ export class Mobile {
 
         this.element = element || window;
         this.isTouch = false;
+        this.isMove = false;        
         this.isPinch = false;
  
         this.touch = {
@@ -12,10 +13,11 @@ export class Mobile {
             pinch : {},
             pitch : 0,
             yaw   : 0,
+            type  : '',
             direction : {
                 north : false,
-                east  : false,
                 south : false,
+                east  : false,
                 west  : false
             }                      
         };
@@ -63,13 +65,29 @@ export class Mobile {
 
     touchUp(e){ 
         // console.log('touch end');
-        
+
+        if(this.isMove){
+            
+            let 
+                typeArr = [];
+
+            Object.keys(this.touch.direction).map( (item) => {
+                
+                if(this.touch.direction[item]) typeArr.push(item);
+
+            });
+            
+            if(typeArr.length > 1) this.touch.type = Math.abs(this.touch.delta.y) > Math.abs(this.touch.delta.x) ? typeArr[0] : typeArr[1];
+
+            this.isMove  = false;
+        }
+                
         this.isTouch = false;
         this.isPinch = false;
         this.touch.direction = {
             north : false,
-            east  : false,
             south : false,
+            east  : false,
             west  : false
         };        
     }
@@ -91,9 +109,12 @@ export class Mobile {
             this.touch.pinch.zoom = this.touch.pinch.start / this.touch.pinch.end;
             // console.log('pinch zoom', this.touch.pinch.zoom);
 
+            this.touch.type = 'pinch';
             this.isPinch = true;
             return;
         }
+
+        this.isMove  = true;
 
         let screen = {
             width  : window.innerWidth,
@@ -110,8 +131,8 @@ export class Mobile {
             y : parseInt(e.touches[0].pageY - this.touch.move.y)
         };
  
-        if(this.touch.delta.y !== 0) this.touch.delta.y > 0 ? ( () => { this.touch.direction.south = true;  this.touch.direction.north = false; } )() : ( ()=> { this.touch.direction.north = true; this.touch.direction.south = false; } )();
-        if(this.touch.delta.x !== 0) this.touch.delta.x > 0 ? ( () => { this.touch.direction.east  = true;  this.touch.direction.west  = false; } )() : ( ()=> { this.touch.direction.west  = true; this.touch.direction.east  = false; } )();
+        if(Math.abs(this.touch.delta.y) > 1) this.touch.delta.y > 0 ? ( () => { this.touch.direction.south = true;  this.touch.direction.north = false; } )() : ( ()=> { this.touch.direction.north = true; this.touch.direction.south = false; } )();
+        if(Math.abs(this.touch.delta.x) > 1) this.touch.delta.x > 0 ? ( () => { this.touch.direction.east  = true;  this.touch.direction.west  = false; } )() : ( ()=> { this.touch.direction.west  = true; this.touch.direction.east  = false; } )();
 
         // console.log('delta ', this.touch.delta);
 
