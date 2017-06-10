@@ -44,8 +44,8 @@ export class Mobile {
             this.touch.pinch.y = e.touches[0].pageY - e.touches[1].pageY;
  
             this.touch.pinch.start = Math.sqrt(this.touch.pinch.x * this.touch.pinch.x + this.touch.pinch.y * this.touch.pinch.y);
-            console.log('pinch start' ,this.touch.pinch.start);
-            
+            // console.log('pinch start' ,this.touch.pinch.start);
+            return;
         }
         
 
@@ -66,12 +66,22 @@ export class Mobile {
             
             this.touch.pinch.x = e.touches[0].pageX - e.touches[1].pageX;
             this.touch.pinch.y = e.touches[0].pageY - e.touches[1].pageY;
-
             // console.log('pinch ' ,this.touch.pinch);
 
             this.touch.pinch.end = Math.sqrt(this.touch.pinch.x * this.touch.pinch.x + this.touch.pinch.y * this.touch.pinch.y);
-            
-            console.log('pinch end ' ,this.touch.pinch.end);
+            // console.log('pinch end ' ,this.touch.pinch.end);
+
+
+            this.touch.pinch.zoom = this.touch.pinch.start / this.touch.pinch.end;
+            // this.touch.pinch.start = this.touch.pinch.end;
+             
+            console.log('pinch zoom', this.touch.pinch.zoom);
+
+            let 
+                fov = 45;
+
+            this.touch.pinch.fov = fov * this.touch.pinch.zoom;
+            console.log('pinch fov', this.touch.pinch.fov);
 
             this.isPinch = true;
             return;
