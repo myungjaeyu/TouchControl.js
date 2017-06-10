@@ -4,6 +4,7 @@ export class Mobile {
 
         this.element = element || window;
         this.isTouch = false;
+        this.isPinch = false;
  
         this.touch = {
             delta : {},
@@ -32,7 +33,7 @@ export class Mobile {
     }
 
     touchDown(e){
-        console.log(this);
+        // console.log(this);
         console.log('touch start');
 
         this.isTouch = true;
@@ -43,11 +44,23 @@ export class Mobile {
         console.log('touch end');
         
         this.isTouch = false;
+        this.isPinch = true;
     }
 
     touchMove(e){
         if(!this.isTouch) return;   
         console.log('touch move');
+
+        if(e.touches.length > 1){
+            
+            this.touch.pinch.x = e.touches[0].pageX - e.touches[1].pageX;
+            this.touch.pinch.y = e.touches[0].pageY - e.touches[1].pageY;
+
+            console.log('pinch ' ,this.touch.pinch);
+            
+            this.isPinch = true;
+            return;
+        }
 
     }
 
