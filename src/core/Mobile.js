@@ -51,7 +51,6 @@ export class Mobile {
 
         this.touch.move.x = e.touches[0].pageX;
         this.touch.move.y = e.touches[0].pageY;
-        console.log('touch move', this.touch.move);
     }
 
     touchUp(e){ 
@@ -92,12 +91,19 @@ export class Mobile {
             height : this.element.clientHeight
         };
 
+        this.touch.delta = {
+            x : parseInt(e.touches[0].pageX - this.touch.move.x),
+            y : parseInt(e.touches[0].pageY - this.touch.move.y)
+        };
+ 
+        console.log('delta ', this.touch.delta);
+
         this.touch.move = {
             x : e.touches[0].pageX,
             y : e.touches[0].pageY
         };
 
-        console.log('move ', this.touch.move);        
+        // console.log('move ', this.touch.move);        
 
         // console.log('screen ', screen);        
 
