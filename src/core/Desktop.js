@@ -31,13 +31,13 @@ export class Desktop {
     }
 
     mouseDown(e){
-        console.log(this);
+        // console.log(this);
         // console.log('mouse down');
 
         this.isTouch  = true;
 
-        this.touch.move.x = e.screenX;
-        this.touch.move.y = e.screenY;
+        this.touch.move.x = e.clientX;
+        this.touch.move.y = e.clientY;
     }
 
     mouseUp(e){
@@ -63,15 +63,15 @@ export class Desktop {
 
 
         this.touch.delta = {
-            x : e.screenX - this.touch.move.x,
-            y : e.screenY - this.touch.move.y
+            x : e.clientX - this.touch.move.x,
+            y : e.clientY - this.touch.move.y
         };
 
         // console.log('delta', this.touch.delta);
 
         this.touch.move = {
-            x : e.screenX,
-            y : e.screenY
+            x : e.clientX,
+            y : e.clientY
         };
 
         // console.log('move ', this.touch.move);
