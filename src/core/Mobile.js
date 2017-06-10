@@ -73,16 +73,8 @@ export class Mobile {
 
 
             this.touch.pinch.zoom = this.touch.pinch.start / this.touch.pinch.end;
-            // this.touch.pinch.start = this.touch.pinch.end;
-             
             console.log('pinch zoom', this.touch.pinch.zoom);
-
-            let 
-                fov = 45;
-
-            this.touch.pinch.fov = fov * this.touch.pinch.zoom;
-            console.log('pinch fov', this.touch.pinch.fov);
-
+            
             this.isPinch = true;
             return;
         }
