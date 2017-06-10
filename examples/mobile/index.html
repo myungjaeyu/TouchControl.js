@@ -55,7 +55,12 @@
                         + 'Pinch start : ' + touch.pinch.start+'\n'
                         + 'Pinch end   : ' + touch.pinch.end+'\n'
                         + 'Pinch zoom  : ' + touch.pinch.zoom+'\n';
-
+                        
+                        Object.keys(touch.direction).forEach(function(item){
+                            
+                            if(touch.direction[item]) console.log(item);
+ 
+                        });                        
                 });
             
             console.log(mobile);

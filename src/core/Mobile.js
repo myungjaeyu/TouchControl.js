@@ -11,7 +11,13 @@ export class Mobile {
             move  : {},
             pinch : {},
             pitch : 0,
-            yaw   : 0            
+            yaw   : 0,
+            direction : {
+                north : false,
+                east  : false,
+                south : false,
+                west  : false
+            }                      
         };
 
         this.touchDown = this.touchDown.bind(this);
@@ -60,6 +66,12 @@ export class Mobile {
         
         this.isTouch = false;
         this.isPinch = false;
+        this.touch.direction = {
+            north : false,
+            east  : false,
+            south : false,
+            west  : false
+        };        
     }
 
     touchMove(e){
@@ -98,6 +110,9 @@ export class Mobile {
             y : parseInt(e.touches[0].pageY - this.touch.move.y)
         };
  
+        if(this.touch.delta.y !== 0) this.touch.delta.y > 0 ? ( () => { this.touch.direction.south = true;  this.touch.direction.north = false; } )() : ( ()=> { this.touch.direction.north = true; this.touch.direction.south = false; } )();
+        if(this.touch.delta.x !== 0) this.touch.delta.x > 0 ? ( () => { this.touch.direction.east  = true;  this.touch.direction.west  = false; } )() : ( ()=> { this.touch.direction.west  = true; this.touch.direction.east  = false; } )();
+
         // console.log('delta ', this.touch.delta);
 
         this.touch.move = {
