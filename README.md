@@ -18,8 +18,10 @@ Simple touch interaction library
 ```
 
 ## Prop
-
+ 
 #### Desktop
+![Alt text](http://drive.google.com/uc?export=view&id=0B3XkfYbZArSfUmFzS19BX1h5NDQ)
+
 ``` 
         isTouch                 : boolean
         isMove                  : boolean
@@ -43,6 +45,8 @@ Simple touch interaction library
 ```
 
 #### Mobile
+![Alt text](http://drive.google.com/uc?export=view&id=0B3XkfYbZArSfQ3RzSGtLS1Vmc2M)
+
 ```
         isTouch                 : boolean
         isMove                  : boolean
