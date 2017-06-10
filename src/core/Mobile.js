@@ -38,6 +38,17 @@ export class Mobile {
 
         this.isTouch = true;
 
+        if(e.touches.length > 1){
+
+            this.touch.pinch.x = e.touches[0].pageX - e.touches[1].pageX;
+            this.touch.pinch.y = e.touches[0].pageY - e.touches[1].pageY;
+ 
+            this.touch.pinch.start = Math.sqrt(this.touch.pinch.x * this.touch.pinch.x + this.touch.pinch.y * this.touch.pinch.y);
+            console.log('pinch start' ,this.touch.pinch.start);
+            
+        }
+        
+
     }
 
     touchUp(e){ 
@@ -56,8 +67,12 @@ export class Mobile {
             this.touch.pinch.x = e.touches[0].pageX - e.touches[1].pageX;
             this.touch.pinch.y = e.touches[0].pageY - e.touches[1].pageY;
 
-            console.log('pinch ' ,this.touch.pinch);
+            // console.log('pinch ' ,this.touch.pinch);
+
+            this.touch.pinch.end = Math.sqrt(this.touch.pinch.x * this.touch.pinch.x + this.touch.pinch.y * this.touch.pinch.y);
             
+            console.log('pinch end ' ,this.touch.pinch.end);
+
             this.isPinch = true;
             return;
         }
