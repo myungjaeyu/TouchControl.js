@@ -3,7 +3,7 @@ import { minify } from 'uglify-es';
 
 export default {
     entry: './src/App.js',
-    dest: './dist/pure-touch-interaction.js',
+    dest: './dist/TouchControl.js',
     format: 'umd',
     moduleName: 'TouchControl',
     sourceMap: 'inline',
