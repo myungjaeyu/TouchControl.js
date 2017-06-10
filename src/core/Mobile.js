@@ -9,7 +9,9 @@ export class Mobile {
         this.touch = {
             delta : {},
             move  : {},
-            pinch : {}
+            pinch : {},
+            pitch : 0,
+            yaw   : 0            
         };
 
         this.touchDown = this.touchDown.bind(this);
@@ -96,7 +98,7 @@ export class Mobile {
             y : parseInt(e.touches[0].pageY - this.touch.move.y)
         };
  
-        console.log('delta ', this.touch.delta);
+        // console.log('delta ', this.touch.delta);
 
         this.touch.move = {
             x : e.touches[0].pageX,
@@ -105,8 +107,21 @@ export class Mobile {
 
         // console.log('move ', this.touch.move);        
 
-        // console.log('screen ', screen);        
+        // console.log('screen ', screen);
 
+        let 
+            fov    = 45,
+            aspect = screen.width / screen.height,
+            radian = Math.PI/180,
+            half   = Math.PI/2;
+
+        this.touch.yaw   += this.touch.delta.x / screen.width * fov * aspect * radian;
+        
+        this.touch.pitch += this.touch.delta.y / screen.height * fov * radian;
+        this.touch.pitch  = Math.max(-half, Math.min(half, this.touch.pitch));
+
+        console.log('yaw', this.touch.yaw);
+        console.log('pitch', this.touch.pitch);
     }
 
 }
