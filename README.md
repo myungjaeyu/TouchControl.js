@@ -3,6 +3,7 @@
 Simple touch interaction library 
 - [Desktop Demo](https://u4bi.github.io/TouchControl.js/examples/desktop)
 - [Mobile Demo](https://u4bi.github.io/TouchControl.js/examples/mobile)
+- [Cross Platform Demo](https://u4bi.github.io/TouchControl.js/examples/multi)
 
 ## Usage
 
@@ -13,7 +14,11 @@ Simple touch interaction library
     var mobile  = new TouchControl.Mobile(HTMLElement);
 
     var client_screen  = new TouchControl.Desktop(); // window
-    var device_screen  = new TouchControl.Mobile();  // window
+    var device_screen  = new TouchControl.Mobile();  // window    
+    
+    
+    var cross_platform          = TouchControl.load(HTMLElement);    
+    var cross_platform_screen   = TouchControl.load();
 
 ```
 
