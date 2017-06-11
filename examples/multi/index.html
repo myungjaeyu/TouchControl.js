@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        
+        <title> Multi </title>
+
+        <style>
+            #wrapper{
+                width : 300px;
+                height: 300px;
+                border: 1px solid red;
+            }
+
+            #noti{ 
+                position: absolute;
+                background: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                border-radius: 10px;
+                padding: 10px 10px 10px 10px ;
+                font-size : .5rem;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);                
+            }
+
+        </style>
+    </head>
+    <body> 
+
+        <div id="wrapper"></div>
+ 
+        <span id="noti">touch and click wrapper</span>        
+
+        <script src="../../TouchControl.min.js"></script>
+        <script>
+
+            var 
+                // multi = TouchControl.load();
+                multi = TouchControl.load(document.getElementById('wrapper'));
+
+            document.getElementById('wrapper').addEventListener('touchmove', touchCall);
+            document.getElementById('wrapper').addEventListener('mousemove', touchCall);
+            
+            function touchCall(e){ 
+                var 
+                    touch = multi.touch,
+                    noti  = document.getElementById('noti');
+                    
+                    noti.style.left = (15 + touch.move.x)+'px';
+                    noti.style.top  = (15 + touch.move.y)+'px';
+                    noti.innerText = ''
+                    + 'Move X  : ' + touch.move.x.toFixed() +'\n'
+                    + 'Move Y  : ' + touch.move.y.toFixed() +'\n'
+                    + 'Type  : ' + touch.type+'\n';
+            }
+
+            console.log(multi);
+
+        </script>
+    </body>
+</html>

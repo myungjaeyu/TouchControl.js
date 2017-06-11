@@ -1,2 +1,3 @@
-export { Desktop } from './core/Desktop';
-export { Mobile }  from './core/Mobile';
+export { Desktop } from './modules/Desktop';
+export { Mobile }  from './modules/Mobile';
+export { load } from './core/load';

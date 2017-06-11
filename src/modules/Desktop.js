@@ -7,10 +7,16 @@ export class Desktop {
         this.isMove = false;
 
         this.touch = {
-            delta : {},
-            move  : {},
-            pitch : 0,
-            yaw   : 0,
+            delta : {
+                x : 0,
+                y : 0
+            },
+            move  : { 
+                x : 0,
+                y : 0
+            },
+            pitch : 0.0,
+            yaw   : 0.0,
             type  : '',
             direction : {
                 north : false,

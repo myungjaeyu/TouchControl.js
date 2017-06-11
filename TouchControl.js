@@ -13,10 +13,16 @@ class Desktop {
         this.isMove = false;
 
         this.touch = {
-            delta : {},
-            move  : {},
-            pitch : 0,
-            yaw   : 0,
+            delta : {
+                x : 0,
+                y : 0
+            },
+            move  : { 
+                x : 0,
+                y : 0
+            },
+            pitch : 0.0,
+            yaw   : 0.0,
             type  : '',
             direction : {
                 north : false,
@@ -162,11 +168,21 @@ class Mobile {
         this.isPinch = false;
  
         this.touch = {
-            delta : {},
-            move  : {},
-            pinch : {},
-            pitch : 0,
-            yaw   : 0,
+            delta : { 
+                x : 0,
+                y : 0
+            },
+            move  : { 
+                x : 0,
+                y : 0
+            },
+            pinch : {
+                start : 0.0,
+                end   : 0.0,
+                zoom  : 0.0
+            },
+            pitch : 0.0,
+            yaw   : 0.0,
             type  : '',
             direction : {
                 north : false,
@@ -332,8 +348,22 @@ class Mobile {
 
 }
 
+const load = (element) => {
+
+    let 
+        dom = element || window;
+
+    if(navigator.userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null){ 
+        return new Mobile(dom);
+    }else{ 
+        return new Desktop(dom);
+    }
+
+};
+
 exports.Desktop = Desktop;
 exports.Mobile = Mobile;
+exports.load = load;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
